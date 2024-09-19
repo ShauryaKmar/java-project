@@ -1,0 +1,226 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background-color: #0077b6;
+    color: white;
+    padding: 60px 0;
+    text-align: center;
+    position: relative; /* Added */
+}
+
+header h1 {
+    font-size: 48px;
+    font-weight: 600;
+}
+
+header p {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+/* Main Section */
+main {
+    margin-top: 40px;
+}
+
+.intro {
+    background-color: white;
+    padding: 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-left: 150px;
+    margin-right: 150px;
+}
+
+.intro h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.intro p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+input[type="text"] {
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+
+button[type="submit"] {
+    padding: 15px;
+    background-color: #0077b6;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #005f86;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 40px;
+}
+
+footer p {
+    font-size: 14px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+    }
+
+    header h1 {
+        font-size: 36px;
+    }
+
+    .intro h2 {
+        font-size: 28px;
+    }
+}
+
+/* Link to API demo */
+.button:hover {
+    background-color: #005f86;
+    color: white;
+}
+
+#demo {
+    width: 150px;
+    height: 50px;
+    color: white;
+    background-color: #0077b6;
+    border-radius: 5px;
+    border-color: white;
+    border-style: solid;
+}
+
+/* Login Button */
+#loginBtn {
+    padding: 15px 30px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+    position: absolute; /* Added */
+    top: 20px; /* Adjust as needed */
+    right: 20px; /* Adjust as needed */
+}
+
+#loginBtn:hover {
+    background-color: #005f86;
+}
+
+/* Glass Effect Overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dark semi-transparent background */
+    display: none;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(10px); /* Glass effect */
+    z-index: 1000; /* Ensure it appears above other content */
+}
+
+.overlay:target {
+    display: flex;
+}
+
+.form-container {
+    background: rgba(255, 255, 255, 0.8); /* Light semi-transparent background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    text-align: center;
+    position: relative;
+}
+
+.form-container a.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+
+.form-container h2 {
+    margin-bottom: 20px;
+}
+
+.form-container label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.form-container input[type="text"], .form-container input[type="password"] {
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.form-container button[type="submit"] {
+    padding: 15px;
+    background-color: #0077b6;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form-container button[type="submit"]:hover {
+    background-color: #005f86;
+}

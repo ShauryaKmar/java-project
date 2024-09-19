@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symptom Diagnosis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        h1 {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="text"], button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: #f8f9fa;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Symptom Diagnosis</h1>
+        <label for="symptoms">Enter symptoms (comma separated):</label>
+        <input type="text" id="symptoms" placeholder="e.g., cough, fever">
+        <button onclick="sendDiagnosis()">Get Diagnosis</button>
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        function sendDiagnosis() {
+            const symptomsInput = document.getElementById('symptoms').value;
+            const symptomsArray = symptomsInput.split(',').map(symptom => symptom.trim());
+
+            fetch('http://localhost:8080/diagnose', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ symptoms: symptomsArray })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(data => {
+                document.getElementById('result').textContent = 'Diagnosis result: ' + JSON.stringify(data);
+            })
+            .catch(error => {
+                document.getElementById('result').innerHTML = '<span class="error">Error fetching diagnosis: ' + error.message + '</span>';
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnosis App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Diagnosis App</h1>
+            <p>Get your diagnosis based on your symptoms instantly.</p>
+            <a href="#loginForm" id="loginBtn">Login</a> <!-- Login Button -->
+        </div>
+    </header>
+
+    <main>
+        <section class="intro">
+            <div class="container">
+                <h2>Enter Your Symptoms</h2>
+                <p>Provide a list of symptoms you're experiencing, and let us help you identify potential diagnoses.</p>
+
+                <form id="symptoms-form">
+                    <label for="symptoms">Symptoms (comma-separated):</label>
+                    <input type="text" id="symptoms" name="symptoms" placeholder="e.g. Headache, Fever, Cough">
+                    <button type="submit">Get Diagnosis</button>
+                </form>
+            </div>
+            <button id="demo" onclick="window.location.href='https://apimedic.com/apitest';">Link to API demo</button>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Diagnosis App | Powered by ApiMedic</p>
+        </div>
+    </footer>
+
+    <!-- Glass effect overlay and login form -->
+    <div id="loginForm" class="overlay">
+        <div class="form-container">
+            <a href="#" class="close">&times;</a>
+            <h2>Login</h2>
+            <form>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

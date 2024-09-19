@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnosis App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Diagnosis App</h1>
+            <p>Get your diagnosis based on your symptoms instantly.</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="intro">
+            <div class="container">
+                <h2>Enter Your Symptoms</h2>
+                <p>Provide a list of symptoms you're experiencing, and let us help you identify potential diagnoses.</p>
+
+                <form id="symptoms-form">
+                    <label for="symptoms">Symptoms (comma-separated):</label>
+                    <input type="text" id="symptoms" name="symptoms" placeholder="e.g. Headache, Fever, Cough">
+                    <button type="submit">Get Diagnosis</button>
+                </form>
+
+                <div id="diagnosis-result" style="margin-top: 20px; padding: 10px; border: 1px solid #ccc; display: none;">
+                    <h3>Diagnosis Result:</h3>
+                    <p id="diagnosis-text"></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Diagnosis App | Powered by ApiMedic</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('symptoms-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const symptoms = document.getElementById('symptoms').value.split(',').map(symptom => symptom.trim());
+
+            fetch('http://localhost:8080/diagnose', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ symptoms: symptoms.join(',') })  // Send symptoms as comma-separated values
+            })
+            .then(response => response.json())
+            .then(data => {
+                const resultDiv = document.getElementById('diagnosis-result');
+                const diagnosisText = document.getElementById('diagnosis-text');
+
+                diagnosisText.innerHTML = JSON.stringify(data, null, 2);
+                resultDiv.style.display = 'block';  // Show the result section
+            })
+            .catch(error => {
+                console.error('Error fetching diagnosis:', error);
+            });
+        });
+    </script>
+</body>
+</html>
